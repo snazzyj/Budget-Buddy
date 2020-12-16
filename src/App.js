@@ -17,6 +17,12 @@ class App extends Component {
     })
   }
 
+  removeBill = (bill_index) => {
+    this.setState({
+      bills: this.state.bills.filter((_, index) => index !== bill_index)
+    })
+  }
+
   addIncome = (e) => {
     e.preventDefault();
 
@@ -33,10 +39,10 @@ class App extends Component {
       <div className="App">
         <section>
           <Income addIncome={this.addIncome} />
-          <Form {...this.props} addBill={this.addBill}/>
+          <Form {...this.props} addBill={this.addBill}  />
         </section>
         <section>
-          <Display bills={this.state.bills} income={this.state.income}/>
+          <Display bills={this.state.bills} income={this.state.income} removeBill={this.removeBill}/>
         </section>
       </div>
     );
