@@ -1,10 +1,14 @@
 import React from 'react';
 
 function Income(props) {
+    console.log(props)
     return <div>
-        <label for="income">
-            <input type="text" placeholder="Income" />
+        <form onSubmit={props.addIncome}>
+        <label htmlFor="income">
+            <input type="text" name="income" placeholder="Income" />
         </label>
+        <button>Add Income</button>
+        </form>
     </div>
 }
 
