@@ -1,52 +1,40 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from './redux/actions';
 import Form from './form/form';
-import Income from './form/income_input';
 import Display from './display/display';
 import './App.css';
 
+function mapStateToProps(state) {
+  return {
+      user: state
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actions, dispatch)
+}
+
 class App extends Component {
 
-  constructor() {
-    super();
-    this.state = {bills: [], income: 0}
-  }
-
-  addBill = (bill) => {
-    this.setState({
-      bills: [...this.state.bills, bill]
-    })
-  }
-
-  removeBill = (bill_index) => {
-    this.setState({
-      bills: this.state.bills.filter((_, index) => index !== bill_index)
-    })
-  }
-
-  addIncome = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      income: e.target.elements.income.value
-    })
-
-    e.target.elements.income.value = ''
+  componentDidMount() {
+    this.props.loadExpenses();
+    this.props.loadIncome();
   }
 
   render() {
-    console.log('current state: ', this.state)
+    console.log(this.props)
     return (
       <div className="App">
         <section>
-          <Income addIncome={this.addIncome} />
-          <Form {...this.props} addBill={this.addBill}  />
+          <Form {...this.props} />
         </section>
         <section>
-          <Display bills={this.state.bills} income={this.state.income} removeBill={this.removeBill}/>
+          <Display {...this.props} />
         </section>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

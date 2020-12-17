@@ -4,28 +4,41 @@ class Display extends Component {
 
     render() {
         console.log(this.props)
+        const {income, expenses} = this.props.user;
+        const total = expenses.reduce((sum, curr) => sum + curr.amount, 0);
+        const difference = income - total || 0;
         return (
             <Fragment>
-            <div>
-                <h3>Income</h3>
-                <span>${this.props.income}</span>
-            </div>
-            <div>
-                {this.props.bills && this.props.bills.map((bill, index) => {
+            <section>
+                <div>
+                    <h3>Income</h3>
+                    <span>${income || 0}</span>
+                </div>
+                <div>
+                    <h3>Total</h3>
+                    <span>${total}</span>
+                </div>
+                <div>
+                    <h3>Difference</h3>
+                    <span>${difference}</span>
+                </div>
+            </section>
+            <section>
+                {expenses && expenses.map((expense, index) => {
                     return <p key={index}>
                         <span>
-                        {bill.name}
+                        {expense.name}{': '}
                         </span>
-                        {': '}
                         <span>
-                        ${' '}{bill.value}
+                        ${expense.amount}
                         </span>
-                        <button onClick={() => this.props.removeBill(index)}>
+                        <button onClick={() => this.props.removeExpense(index)}>
                             X
                         </button>
                         </p>
                 })}
-            </div>
+            </section>
+
             </Fragment>
         )
     }

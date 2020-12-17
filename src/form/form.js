@@ -1,27 +1,34 @@
 import React, {Component} from 'react';
+import Income from './income_input';
 import Expenses from './expenses';
 
 class Form extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Bill name: ', e.target.elements.montly_bill_name.value)
-        console.log('Bill value: ', e.target.elements.montly_bill_number.value)
-        let bill = {
-            name: e.target.elements.montly_bill_name.value,
-            value: e.target.elements.montly_bill_number.value
+        let incomeVal = e.target.elements.income.value
+        console.log('Income val:', e.target.elements.income.value)
+        console.log('Bill name: ', e.target.elements.expense_name.value)
+        console.log('Bill value: ', e.target.elements.expense_amount.value)
+        let expense = {
+            name: e.target.elements.expense_name.value,
+            amount: Number(e.target.elements.expense_amount.value)
         }
 
-        this.props.addBill(bill)
-        e.target.elements.montly_bill_name.value = ''
-        e.target.elements.montly_bill_number.value = ''
+        if(incomeVal > 0) {
+            this.props.addIncome(incomeVal)
+        } else {
+            this.props.addExpense(expense)
+        }
 
+        e.target.elements.expense_name.value = ''
+        e.target.elements.expense_amount.value = ''
     }
 
     render() {
-        console.log(this.props)
         return (
             <form onSubmit={this.handleSubmit}>
+                <Income />
                 <Expenses />
                 <button >Add Expense</button>
             </form>
