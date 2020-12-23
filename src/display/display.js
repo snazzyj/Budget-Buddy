@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AssessmentOutlined, AttachMoneyOutlined, ReceiptOutlined, RemoveCircleOutline } from '@material-ui/icons';
+import { AssessmentOutlined, AttachMoneyOutlined, ReceiptOutlined, RemoveCircleOutline, LocalAtmOutlined } from '@material-ui/icons';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 class Display extends Component {
@@ -15,18 +15,30 @@ class Display extends Component {
                     <tr>
                         <td className="income_display">
                             <h3>Income</h3>
-                            <AttachMoneyOutlined style={{ fontSize: 40, color: 'green' }} />
-                            <p>${income || 0}</p>
+                            <LocalAtmOutlined style={{ fontSize: 50, color: 'green' }} />
+                            <p>
+                                <strong>
+                                    ${' '}{income || 0}
+                                </strong>
+                            </p>
                         </td>
                         <td className="expenses_display">
                             <h3>Expenses</h3>
-                            <ReceiptOutlined style={{ fontSize: 40, color: '#2489db' }} />
-                            <p>${total}</p>
+                            <ReceiptOutlined style={{ fontSize: 50, color: '#2489db' }} />
+                            <p>
+                                <strong>
+                                    ${' '}{total}
+                                </strong>
+                            </p>
                         </td>
                         <td className="diff_display">
                             <h3>Difference</h3>
-                            <AssessmentOutlined style={{ fontSize: 40 }} />
-                            <p style={difference >= 0 ? { color: 'blue' } : { color: 'red' }}>${difference}</p>
+                            <AssessmentOutlined style={{ fontSize: 50 }} />
+                            <p style={difference >= 0 ? { color: 'blue' } : { color: 'red' }}>
+                                <strong>
+                                    ${' '}{difference}
+                                </strong>
+                            </p>
                         </td>
                     </tr>
                     <tr>

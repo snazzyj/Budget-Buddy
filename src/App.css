@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  color: white;
+}
+
+h3 {
+  margin: 0;
 }
 
 .App-header {
@@ -21,15 +26,19 @@ button {
 main {
   width: 75%;
   height: 100vh;
-  margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.left_cont, .right_cont {
+.right_cont {
+  width: 33%;
+}
+
+.left_cont {
   width: 33%;
 }
 
@@ -39,13 +48,17 @@ thead > tr > td > h3, thead > tr > td > p {
 }
 
 thead > tr > td {
-  padding: 10px 0;
+  padding-bottom: 20px;
 }
 
 table {
   width: 100%;
   text-align: center;
   font-size: 18px;
+}
+
+.income_display, .expenses_display, .diff_display {
+  font-size: 24px;
 }
 
 .income_display > p {
@@ -98,16 +111,24 @@ form {
   margin: 10px;
 }
 
+.income_input > h3, .expenses_input > h3 {
+  text-decoration: underline;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
 .income_input > button, .expenses_input > button {
-  width: 100px;
+  width: 110px;
   padding: 5px;
-  border: 1px solid red;
   margin-top: 10px;
+  border: 1px solid #50bcef;
+  color: white;
+  transition: 0.5s;
+  font-size: 14px;
 }
 
 .income_input > button:hover, .expenses_input > button:hover {
-  background-color: red;
-  color: white;
+  background-color: #0f709e;
   transition: 0.4s;
 }
 
