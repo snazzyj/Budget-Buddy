@@ -10,9 +10,9 @@ function expenses(state = expenseData, action) {
     }
 }
 
-function income(state = 3200, action) {
+function income(state = 0, action) {
     switch(action.type) {
-        case 'ADD_INCOME': return action.income
+        case 'ADD_INCOME': return Number(action.income)
         case 'LOAD_INCOME': return state
         default: return state
     }
