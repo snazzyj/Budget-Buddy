@@ -1,47 +1,59 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
+import { AssessmentOutlined, AttachMoneyOutlined, ReceiptOutlined, RemoveCircleOutline } from '@material-ui/icons';
 
 class Display extends Component {
 
     render() {
         console.log(this.props)
-        const {income, expenses} = this.props.user;
+        const { income, expenses } = this.props;
         const total = expenses.reduce((sum, curr) => sum + curr.amount, 0);
         const difference = income - total || 0;
         return (
-            <Fragment>
-            <section>
-                <div>
-                    <h3>Income</h3>
-                    <span>${income || 0}</span>
-                </div>
-                <div>
-                    <h3>Total</h3>
-                    <span>${total}</span>
-                </div>
-                <div>
-                    <h3>Difference</h3>
-                    <span>${difference}</span>
-                </div>
-            </section>
-            <section>
-                {expenses && expenses.map((expense, index) => {
-                    return <p key={index}>
-                        <span>
-                        {expense.name}{': '}
-                        </span>
-                        <span>
-                        ${expense.amount}
-                        </span>
-                        <button onClick={() => this.props.removeExpense(index)}>
-                            X
-                        </button>
-                        </p>
-                })}
-            </section>
-
-            </Fragment>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td className="income_display">
+                                    <h3>Income</h3>
+                                    <AttachMoneyOutlined style={{fontSize: 40, color: 'green'}} />
+                                    <p>${income || 0}</p>
+                                </td>
+                                <td className="expenses_display">
+                                    <h3>Expenses</h3>
+                                    <ReceiptOutlined style={{fontSize: 40, color: '#2489db'}} />
+                                    <p>${total}</p>
+                                </td>
+                                <td className="diff_display">
+                                    <h3>Difference</h3>
+                                    <AssessmentOutlined style={{fontSize: 40}} />
+                                    <p style={difference >= 0 ? {color: 'blue'} : {color: 'red'}}>${difference}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expense Name</strong></td>
+                                <td><strong>Expense Amount</strong></td>
+                                <td><strong>Remove</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {expenses && expenses.map((expense, index) => {
+                                return <tr key={index} className="expense">
+                                    <td>
+                                        {expense.name}
+                                    </td>
+                                    <td>
+                                        ${expense.amount}
+                                    </td>
+                                    <td>
+                                        <button onClick={() => this.props.removeExpense(index)} className="remove">
+                                            <RemoveCircleOutline />
+                                        </button>
+                                    </td>
+                                </tr>
+                            })}
+                        </tbody>
+                    </table>
         )
     }
-} 
+}
 
 export default Display
