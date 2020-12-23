@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from './redux/actions';
 import Form from './form/form';
 import Display from './display/display';
@@ -8,7 +8,8 @@ import './App.css';
 
 function mapStateToProps(state) {
   return {
-      user: state
+    expenses: state.expenses,
+    income: state.income
   }
 }
 function mapDispatchToProps(dispatch) {
@@ -26,12 +27,14 @@ class App extends Component {
     console.log(this.props)
     return (
       <div className="App">
-        <section>
-          <Form {...this.props} />
-        </section>
-        <section>
-          <Display {...this.props} />
-        </section>
+        <main>
+          <section className="left_cont">
+            <Form {...this.props} />
+          </section>
+          <section className="right_cont">
+            <Display {...this.props} />
+          </section>
+        </main>
       </div>
     );
   }

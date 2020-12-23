@@ -11,3 +11,102 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+main {
+  width: 75%;
+  height: 100vh;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.left_cont, .right_cont {
+  width: 33%;
+}
+
+/* Right side Container */
+thead > tr > td > h3, thead > tr > td > p {
+  margin: 0;
+}
+
+thead > tr > td {
+  padding: 10px 0;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+.income_display > p {
+  color: green
+}
+
+.expenses_display > p {
+  color: red
+}
+
+/* Remove button */
+.expense > td > button:hover {
+  color: red;
+}
+
+/* Left Side Container */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.income_input, .expenses_input {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.income_input {
+  margin: 10px;
+  margin-top: 0;
+}
+
+.expenses_input {
+  margin: 10px;
+}
+
+.income_input > button, .expenses_input > button {
+  width: 100px;
+  padding: 5px;
+  border: 1px solid red;
+  margin-top: 10px;
+}
+
+.income_input > button:hover, .expenses_input > button:hover {
+  background-color: red;
+  color: white;
+  transition: 0.4s;
+}
+
+.income_input > label > input, .expenses_input > label > input {
+  width: 350px;
+  padding: 10px 5px;
+  margin: 5px;
+  margin-left: 0;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.income_input > label > input:focus, .expenses_input > label > input:focus {
+  outline: none;
+}
+
