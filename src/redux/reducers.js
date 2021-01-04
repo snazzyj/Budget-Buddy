@@ -1,10 +1,9 @@
-import expenseData from '../data/expenseData';
 import {combineReducers} from 'redux';
 
-function expenses(state = expenseData, action) {
+function expenses(state = [], action) {
     switch(action.type) {
         case 'ADD_EXPENSE': return [...state, action.expense]
-        case 'LOAD_EXPENSES': return state
+        case 'LOAD_EXPENSES': return action.expenses ? action.expenses : state
         case 'REMOVE_EXPENSE': return [...state.filter((_, index) => index !== action.index)]
         default: return state
     }
@@ -13,7 +12,7 @@ function expenses(state = expenseData, action) {
 function income(state = 0, action) {
     switch(action.type) {
         case 'ADD_INCOME': return Number(action.income)
-        case 'LOAD_INCOME': return state
+        case 'LOAD_INCOME': return action.income ? action.income : state
         default: return state
     }
 }

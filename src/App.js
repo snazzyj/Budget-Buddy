@@ -19,8 +19,8 @@ function mapDispatchToProps(dispatch) {
 class App extends Component {
 
   componentDidMount() {
-    this.props.loadExpenses();
-    this.props.loadIncome();
+    this.props.startLoadingExpenses();
+    this.props.getIncomeStorage();
   }
 
   render() {

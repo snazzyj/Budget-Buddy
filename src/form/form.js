@@ -16,9 +16,9 @@ class Form extends Component {
         };
 
         if(incomeVal > 0) {
-            this.props.addIncome(incomeVal);
+            this.props.setIncomeStorage(incomeVal);
         } else {
-            this.props.addExpense(expense);
+            this.props.startAddingExpense(expense);
         }
 
         e.target.elements.expense_name.value = '';

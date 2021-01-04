@@ -31,7 +31,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .right_cont {
@@ -121,7 +121,7 @@ form {
   width: 110px;
   padding: 5px;
   margin-top: 10px;
-  border: 1px solid #50bcef;
+  border: 1px solid black;
   color: white;
   transition: 0.5s;
   font-size: 14px;
