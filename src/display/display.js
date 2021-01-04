@@ -57,7 +57,7 @@ class Display extends Component {
                                     ${expense.amount}
                                 </td>
                                 <td>
-                                    <button onClick={() => this.props.removeExpense(index)} className="remove">
+                                    <button onClick={() => this.props.startRemovingExpense(index)} className="remove">
                                         <RemoveCircleOutline />
                                     </button>
                                 </td>

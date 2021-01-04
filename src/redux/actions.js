@@ -28,6 +28,15 @@ export function loadExpenses(expenses) {
     }
 }
 
+export function startRemovingExpense(index) {
+    let expenses = JSON.parse(localStorage.getItem('expenses'));
+    let filtered = expenses.filter((_, idx) => index !== idx);
+    localStorage.setItem('expenses', JSON.stringify(filtered))
+    return dispatch => {
+        dispatch(removeExpense(index))
+    }
+}
+
 export function removeExpense(index) {
     return {
         type: 'REMOVE_EXPENSE',
