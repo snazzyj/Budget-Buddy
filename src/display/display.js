@@ -5,7 +5,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 class Display extends Component {
 
     render() {
-        console.log(this.props)
         const { income, expenses } = this.props;
         const total = expenses.reduce((sum, curr) => sum + curr.amount, 0);
         const difference = income - total || 0;

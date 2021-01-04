@@ -22,7 +22,6 @@ export function startLoadingExpenses() {
 }
 
 export function loadExpenses(expenses) {
-    console.log(expenses)
     return {
         type: 'LOAD_EXPENSES',
         expenses
